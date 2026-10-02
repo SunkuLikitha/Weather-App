@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f8f6">
+    <meta name="description" content="Look up current weather conditions for cities around the world with Open-Meteo.">
+    <title>Weather App | Live city forecast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <main class="page-shell">
+        <header class="topbar">
+            <a class="brand" href="/" aria-label="Weather App home">
+                <span class="brand-mark" aria-hidden="true"><span></span></span>
+                <span>Weather<span class="brand-light">/</span>now</span>
+            </a>
+            <span class="live-label"><span class="live-dot"></span> LIVE CONDITIONS</span>
+        </header>
+
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">A little closer to the forecast</p>
+            <h1 id="page-title">Your city,<br><span>right now.</span></h1>
+            <p class="intro-copy">Get a clear picture of the weather, wherever the day takes you.</p>
+
+            <form class="search-form" id="weather-form">
+                <label class="visually-hidden" for="city-input">City name</label>
+                <span class="search-icon" aria-hidden="true"></span>
+                <input id="city-input" name="city" type="search" placeholder="Search a city..." autocomplete="off" required>
+                <button type="submit">
+                    <span>Search weather</span>
+                    <span class="button-arrow" aria-hidden="true">&#8599;</span>
+                </button>
+            </form>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="weather-card" id="weather-card" aria-live="polite" aria-label="Current weather" hidden>
+            <div class="weather-heading">
+                <div>
+                    <p class="card-label">CURRENT WEATHER</p>
+                    <h2 id="city-name"></h2>
+                    <p class="condition" id="condition"></p>
+                </div>
+                <span class="weather-icon" id="weather-icon" role="img" aria-label=""></span>
+            </div>
+            <div class="temperature-row">
+                <p class="temperature"><span id="temperature"></span><span class="degree">&deg;</span></p>
+                <div class="feels-like">
+                    <span>FEELS LIKE</span>
+                    <strong><span id="feels-like"></span>&deg;C</strong>
+                </div>
+            </div>
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="detail-symbol humidity-symbol" aria-hidden="true"></span>
+                    <span class="detail-label">Humidity</span>
+                    <strong><span id="humidity"></span>%</strong>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-symbol wind-symbol" aria-hidden="true"></span>
+                    <span class="detail-label">Wind</span>
+                    <strong><span id="wind-speed"></span> m/s</strong>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-symbol pressure-symbol" aria-hidden="true"></span>
+                    <span class="detail-label">Pressure</span>
+                    <strong><span id="pressure"></span> hPa</strong>
+                </div>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <span>Weather data by Open-Meteo</span>
+            <span class="footer-mark" aria-hidden="true">W<span>.</span></span>
+        </footer>
+    </main>
+</body>
+</html>
